@@ -7,17 +7,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.Productos;
+import services.LoginService;
+import services.LoginServiceSessionImplement;
 import services.ProductoService;
 import services.ProductoServiceImplement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/productos")
 public class ProductosServlet extends HttpServlet {
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws IOException , ServletException {
+        LoginService session = new LoginServiceSessionImplement();
+        Optional<String> usernameOptional = session.getUsername(req);
+        if  (usernameOptional.isPresent()) {
         ProductoService service = new ProductoServiceImplement();
         List<Productos> productos = service.listar();
         resp.setContentType("text/html;charset=UTF-8");
@@ -30,6 +36,7 @@ public class ProductosServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         out.println("<h1>Listar Productos</h1>");
+        out.println("<h2>Hola "+ usernameOptional.get()+ ", Bienvenido!</h2>");
         out.println("<table>");
         out.println("<tr>");
         out.println("<th> ID PRODUCTO </th>");
@@ -49,6 +56,9 @@ public class ProductosServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
 
+        } else {
+
+        }
     }
 }
 
