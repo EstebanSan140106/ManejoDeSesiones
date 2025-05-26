@@ -10,7 +10,7 @@ import org.esteban.ManejoDeSesiones.services.LoginServiceSessionImplement;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/productos ", "/agregar-carro"})
+@WebFilter("/productos")
 public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException , ServletException {
@@ -20,7 +20,7 @@ public class LoginFilter implements Filter {
         if (username.isPresent()) {
             filterChain.doFilter(req, resp);
         } else {
-            ((HttpServletResponse)resp).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo Sentimos, no estas autorizadop para ingresar a esta pagina" );
+            ((HttpServletResponse)resp).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Lo Sentimos, no estas autorizado para ingresar a esta pagina" );
         }
     }
 }
