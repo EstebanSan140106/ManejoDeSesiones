@@ -1,15 +1,13 @@
-package controllers;
+package org.esteban.ManejoDeSesiones.controllers;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import services.LoginService;
-import services.LoginServiceImplment;
-import services.LoginServiceSessionImplement;
+import org.esteban.ManejoDeSesiones.services.LoginService;
+import org.esteban.ManejoDeSesiones.services.LoginServiceSessionImplement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Optional;
 
 @WebServlet({"/login" , "/login.html"})
