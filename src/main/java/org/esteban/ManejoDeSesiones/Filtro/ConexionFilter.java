@@ -24,7 +24,7 @@ public class ConexionFilter implements Filter {
             try {
                 filterChain.doFilter(req, resp);
                 con.commit();
-            } catch (SQLException| ServiceJdbcException e) {
+            } catch (SQLException | ServiceJdbcException e) {
                 con.rollback();
                 ((HttpServletResponse)resp).sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage() );
             }

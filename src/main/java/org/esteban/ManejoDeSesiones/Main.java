@@ -16,7 +16,7 @@ public class Main {
         } catch (SQLException e) {
             System.err.println("Error al conectar con la base de datos");
         } finally {
-             if (con != null) {
+             if (con == null) {
                  try {
                      con.close();
                      System.out.println("Conexión cerrada");
