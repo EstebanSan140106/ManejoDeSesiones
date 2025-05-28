@@ -11,6 +11,7 @@ import org.esteban.ManejoDeSesiones.services.LoginService;
 import org.esteban.ManejoDeSesiones.services.LoginServiceSessionImplement;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet ("/logout")
@@ -25,6 +26,15 @@ public class Logout extends HttpServlet {
             HttpSession session = req.getSession();
 
             session.invalidate();
+        }
+        try (PrintWriter out = resp.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<meta charset=\"utf-8\">");
+            out.println("<link a href=\"bootstrap.min.css\" rel=\"stylesheet\">");
+            out.println("</head>");
+            out.println("</html>");
         }
         resp.sendRedirect(req.getContextPath()+"/login.html");
     }

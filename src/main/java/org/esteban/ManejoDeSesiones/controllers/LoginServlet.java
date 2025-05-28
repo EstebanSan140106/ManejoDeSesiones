@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
                 out.println("<head>");
                 out.println("<meta charset=\"UTF-8\">");
                 out.println("<title>Hola " + usernameOptional.get() + "</title>");
-                out.println("<link href=\"" + req.getContextPath() + "/css/bootstrap.min.css\" rel=\"stylesheet\">");
+                out.println("<link href=\"" + req.getContextPath() + "/bootstrap.min.css\" rel=\"stylesheet\">");
                 out.println("</head>");
                 out.println("<body class=\"bg-light\">");
                 out.println("<div class=\"container mt-5\">");
