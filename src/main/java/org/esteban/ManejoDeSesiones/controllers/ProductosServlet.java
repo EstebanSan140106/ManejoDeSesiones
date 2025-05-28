@@ -28,9 +28,7 @@ public class ProductosServlet extends HttpServlet {
             out.println("<head>");
             out.println("<meta charset=\"UTF-8\">");
             out.println("<title>Listar Productos</title>");
-            // Include Bootstrap CSS (using CDN for simplicity; replace with local path if needed)
             out.println("<link a href=\"bootstrap.min.css\" rel=\"stylesheet\">");
-            // Optional: Add custom styles if needed
             out.println("<style>");
             out.println("body { padding-top: 20px; }");
             out.println(".table th, .table td { vertical-align: middle; }");

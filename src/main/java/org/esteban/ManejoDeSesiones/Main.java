@@ -7,7 +7,6 @@ import java.sql.DatabaseMetaData;
 
 public class Main {
 
-    // CONFIGURACIÓN
 //CONEXION A LA BASE DE DATOS
     private static final String DB_URL = "jdbc:mysql://localhost:3306/restaurante";
     private static final String USUARIO = "root";
