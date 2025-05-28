@@ -8,38 +8,41 @@ import java.util.List;
 
 public class CategoriaRepositorioJdbcImplement implements Repositorio<Categoría> {
 
-   //creamos una variable donde vamos a guardar la conexion
+    //creamos una variable donde vamos a guardar la conexion
     private Connection conexion;
+
     public CategoriaRepositorioJdbcImplement(Connection conexion) {
+
         this.conexion = conexion;
     }
+
     @Override
     public List<Categoría> listar() throws SQLException {
-    List<Categoría> categorias = new ArrayList<>();
-try (Statement stmt = conexion.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM categoría")) {
-        while (rs.next()) {
-            Categoría c = getCategoría(rs);
-            categorias.add(c);
+        List<Categoría> categorias = new ArrayList<>();
+        try (Statement stmt = conexion.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM categoría")) {
+            while (rs.next()) {
+                Categoría c = getCategoría(rs);
+                categorias.add(c);
 
+            }
         }
-}
-return categorias;
+        return categorias;
     }
 
 
     @Override
     public Categoría porId(Long id) throws SQLException {
-    //Creo un obj tipo categoria nulo
+        //Creo un obj tipo categoria nulo
         Categoría categoría = null;
-        try (PreparedStatement stmt = conexion.prepareStatement("SELECT * FROM categoria where id = ?")){
-        stmt.setLong(1, id);
-        try (ResultSet rs = stmt.executeQuery()) {
-            categoría = getCategoría(rs);
+        try (PreparedStatement stmt = conexion.prepareStatement("SELECT * FROM categoria where id = ?")) {
+            stmt.setLong(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                categoría = getCategoría(rs);
+            }
         }
-    }
         return categoría;
-}
+    }
 
     @Override
     public void guardar(Categoría categoría) throws SQLException {
@@ -55,7 +58,7 @@ return categorias;
     @Override
     public void eliminar(Long id) throws SQLException {
 
-        }
+    }
 
 
     private Categoría getCategoría(ResultSet rs) throws SQLException {
