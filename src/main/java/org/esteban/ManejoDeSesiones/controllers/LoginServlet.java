@@ -29,13 +29,15 @@ public class LoginServlet extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<meta charset=\"UTF-8\">");
-                out.println("<title>Hola "+ usernameOptional.get()+"</title>");
+                out.println("<title>Hola " + usernameOptional.get() + "</title>");
+                out.println("<link href=\"" + req.getContextPath() + "/css/bootstrap.min.css\" rel=\"stylesheet\">");
                 out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Hola " + usernameOptional.get()+ " ya iniciaste sesion anteriormente!</h1>");
-                out.println("<p> <a href='" +req.getContextPath()+"/index.html'> Volver al inicio </a> </p>" );
-                out.println("<p> <a href='"+req.getContextPath()+"/logout'> Cerrar Sesión</a> </p>");
-
+                out.println("<body class=\"bg-light\">");
+                out.println("<div class=\"container mt-5\">");
+                out.println("<h1 class=\"display-4 text-primary\">Hola " + usernameOptional.get() + ", ya iniciaste sesión anteriormente!</h1>");
+                out.println("<p><a href=\"" + req.getContextPath() + "/index.html\" class=\"btn btn-primary mt-3\">Volver al inicio</a></p>");
+                out.println("<p><a href=\"" + req.getContextPath() + "/logout\" class=\"btn btn-danger mt-2\">Cerrar Sesión</a></p>");
+                out.println("</div>");
                 out.println("</body>");
                 out.println("</html>");
             }
