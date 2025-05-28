@@ -22,6 +22,7 @@ public class ConexionFilter implements Filter {
 
             }
             try {
+                req.setAttribute("con", con);
                 filterChain.doFilter(req, resp);
                 con.commit();
             } catch (SQLException | ServiceJdbcException e) {

@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Optional;
 
 @WebServlet("/productos")
-public class ProductosServlet extends HttpServlet {
+public class
+ProductosServlet extends HttpServlet {
     @Override
     protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws IOException , ServletException {
         ProductoService service = new ProductoServiceImplement();

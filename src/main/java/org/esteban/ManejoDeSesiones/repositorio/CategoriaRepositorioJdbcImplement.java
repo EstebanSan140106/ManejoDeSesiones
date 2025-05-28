@@ -1,7 +1,6 @@
 package org.esteban.ManejoDeSesiones.repositorio;
 
 import org.esteban.ManejoDeSesiones.models.Categoría;
-import org.esteban.ManejoDeSesiones.util.Conexion;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ return categorias;
     //Creo un obj tipo categoria nulo
         Categoría categoría = null;
         try (PreparedStatement stmt = conexion.prepareStatement("SELECT * FROM categoria where id = ?")){
-        stmt.setInt(1, id.intValue());
+        stmt.setLong(1, id);
         try (ResultSet rs = stmt.executeQuery()) {
             categoría = getCategoría(rs);
         }
@@ -46,16 +45,18 @@ return categorias;
     public void guardar(Categoría categoría) throws SQLException {
         //Declaro una variable de tipo string Sql
         String sql;
-        if (categoría.getIdCategoria() > 0) {
+        if (categoría.getIdCategoria() != null && categoría.getIdCategoria() > 0) {
             sql = "update categoría set nombre=? desocripcion=? where idCategoria=?";
         } else {
             sql = "insert into categoría (nombnre,descrpcion,condicion) values (?,?,1)";
         }
     }
-    @Override
-    public void eliminar(int id) throws SQLException {
 
-    }
+    @Override
+    public void eliminar(Long id) throws SQLException {
+
+        }
+
 
     private Categoría getCategoría(ResultSet rs) throws SQLException {
         Categoría c = new Categoría();
